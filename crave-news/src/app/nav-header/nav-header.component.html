@@ -1,0 +1,28 @@
+<md-toolbar color="primary">
+  <span>Crave News</span>
+  <button md-icon-button [mdMenuTriggerFor]="menu">
+  <md-icon>more_vert</md-icon>
+  <md-menu #menu="mdMenu">
+  <button md-menu-item>
+    <md-icon>settings</md-icon>
+    <span>Redial</span>
+  </button>
+  <i class="material-icons md-24">face</i>
+  <button md-menu-item disabled>
+    <md-icon>voicemail</md-icon>
+    <span>Check voicemail</span>
+  </button>
+  <button md-menu-item>
+    <md-icon>notifications_off</md-icon>
+    <span>Disable alerts</span>
+  </button>
+</md-menu>
+  </button>
+
+  <md-toolbar-row>
+    <span>Second Line</span>
+    <span class="example-spacer"></span>
+    <md-icon class="example-icon">verified_user</md-icon>
+  </md-toolbar-row>
+
+</md-toolbar>
