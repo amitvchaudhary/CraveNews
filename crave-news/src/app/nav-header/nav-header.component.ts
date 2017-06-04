@@ -9,6 +9,20 @@ export class NavHeaderComponent implements OnInit {
 
   constructor() { }
 
+  newsSources:Object[]=[
+    {
+      source:"Times Of India",
+      description:"Description",
+      icon:"dashboard"
+    },
+     {
+      source:"Tech Crunch",
+      description:"Description",
+      icon:"dashboard"
+    }
+
+  ];
+
   ngOnInit() {
   }
 
