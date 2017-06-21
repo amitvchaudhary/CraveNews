@@ -57,14 +57,11 @@
 </div> 
     <br>
  <button type="submit" [disabled]="!newsForm.valid" class="btn btn-primary" md-button>Add News</button>  
-<table class="table table-striped table-hover" >
-    <tr *ngFor="let newsStory of newsStories">
-        <td>{{newsStory.newsItemHeadline}}</td>
-     
-        <td><img [src]="newsStory.newsItemImageSrc"></td>
-        <td><button class="btn btn-danger" md-button (click)="deleteNewsStory(newsStory.newsItemId)">Delete</button></td>
-    </tr>
-</table>
+</form>
+
+
+<app-list-news></app-list-news>
+
 
 
 <div class="alert alert-dismissible alert-danger" *ngIf="errorMessage">
@@ -72,11 +69,6 @@
   <strong>{{errorMessage}}</strong>
 </div>
 
-<div class="alert alert-dismissible alert-danger" *ngIf="newsItemDeletedMessage">
-  <button class="close" type="button" data-dismiss="alert">&times;</button>
-  <strong>{{newsItemDeletedMessage}}</strong>
-</div>
 
-</form>
 </md-card>
 

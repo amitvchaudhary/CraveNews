@@ -13,13 +13,15 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
 import { NewsDashboardComponent } from './news-dashboard/news-dashboard.component';
 import {NewsServiceService} from './Services/news-service.service';
 import {AddNewsComponent} from './add-news/add-news.component';
+import {ListNewsComponent} from './list-news/list-news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavHeaderComponent,
     NewsDashboardComponent,
-    AddNewsComponent
+    AddNewsComponent,
+    ListNewsComponent
   ],
   imports: [
     BrowserModule,

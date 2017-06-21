@@ -7,5 +7,6 @@ export class NewsItem
     newsItemImageSrc:string;
     newsItemLink:string;
     newsItemSource:string;
+    newsItemTechNonTech: string;
 
 }

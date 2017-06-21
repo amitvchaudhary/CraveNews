@@ -1,0 +1,20 @@
+<br><br>
+<div class="panel panel-default">
+  <div class="panel-body">
+      <div class="panel-heading"><h3><b>News Items </b></h3></div>
+
+<table class="table table-bordered table-hover" >
+   <tr>
+       <th>Headline</th>
+       <th>Image</th>
+       <th>Delete</th>
+       <th>Edit</th>
+    </tr>
+    <tr *ngFor="let newsStory of newsStories">
+        <td>{{newsStory.newsItemHeadline}}</td>
+     
+        <td><img [src]="newsStory.newsItemImageSrc"></td>
+        <td><button class="btn btn-danger" md-button (click)="deleteNewsStory(newsStory.newsItemId)">Delete</button></td>
+        <td><button class="btn btn-success" md-button (click)="editNewsStory(newsStory.newsItemId)">Edit</button></td>
+    </tr>
+</table>
