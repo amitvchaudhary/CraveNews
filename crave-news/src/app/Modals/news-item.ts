@@ -1,4 +1,4 @@
-export interface NewsItem
+export class NewsItem
 {
     newsItemId:number;
     newsItemHeadline:string;
@@ -6,5 +6,6 @@ export interface NewsItem
     newsItemPubDate: string;
     newsItemImageSrc:string;
     newsItemLink:string;
+    newsItemSource:string;
 
 }

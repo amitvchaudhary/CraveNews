@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -12,16 +12,18 @@ import { AppComponent } from './app.component';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
 import { NewsDashboardComponent } from './news-dashboard/news-dashboard.component';
 import {NewsServiceService} from './Services/news-service.service';
+import {AddNewsComponent} from './add-news/add-news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavHeaderComponent,
-    NewsDashboardComponent
+    NewsDashboardComponent,
+    AddNewsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
     MdButtonModule,
