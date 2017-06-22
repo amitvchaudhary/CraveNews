@@ -24,7 +24,7 @@ isEditNewsItem:boolean;
 newsForm:FormGroup;
 newsFormValues:any;
 
-@ViewChild(ListNewsComponent) private listNewsComponent: ListNewsComponent;
+//@ViewChild(ListNewsComponent) private listNewsComponent: ListNewsComponent;
 
 
 onSubmit(newsFormValues:any)
@@ -66,7 +66,6 @@ this.newsForm.controls['headline'].setValue("default");
 
 
 
-
     private addNewsStory()
     {
     
@@ -88,7 +87,7 @@ this.newsForm.controls['headline'].setValue("default");
         {
            // this.getNewsStories();
             //this.newsStories.push(this.newsItem);
-            this.listNewsComponent.ngOnInit();
+            //this.listNewsComponent.ngOnInit();
         },
         error=>this.errorMessage=<any>error);
 

@@ -14,6 +14,7 @@ import { NewsDashboardComponent } from './news-dashboard/news-dashboard.componen
 import {NewsServiceService} from './Services/news-service.service';
 import {AddNewsComponent} from './add-news/add-news.component';
 import {ListNewsComponent} from './list-news/list-news.component';
+import {DeleteNewsComponent} from './delete-news/delete-news.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ListNewsComponent} from './list-news/list-news.component';
     NavHeaderComponent,
     NewsDashboardComponent,
     AddNewsComponent,
-    ListNewsComponent
+    ListNewsComponent,
+    DeleteNewsComponent
   ],
   imports: [
     BrowserModule,

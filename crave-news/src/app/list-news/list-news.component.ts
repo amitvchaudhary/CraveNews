@@ -17,6 +17,7 @@ private newsStories:NewsItem[];
 private errorMessage:string;
 private newsItemDeletedMessage:string;
 
+
     constructor(private newsServiceService:NewsServiceService, private snackBar:MdSnackBar){};
 
     ngOnInit():void
@@ -33,6 +34,7 @@ private newsItemDeletedMessage:string;
     
     private getNewsStories()
     {
+        console.log("getNewstories called");
         this.newsServiceService.getCustomNewsItems()
         .subscribe(newsStories=>
         {
@@ -45,23 +47,11 @@ private newsItemDeletedMessage:string;
         
     }
 
-    
-    private deleteNewsStory(newsItemId: number)
+    onDeleted(message:string):void
     {
-        console.log(newsItemId + "selected for deletion");
-        this.newsServiceService.deleteNewsItem(newsItemId)
-          .subscribe(newsItem =>
-        {
-            this.newsItemDeletedMessage=newsItem;
-            this.snackBar.open(this.newsItemDeletedMessage,null,{duration:2000,});
-            this.getNewsStories();
-
-        },error=>
-        {
-            this.errorMessage=error;
-        }
-        )    
-
+        
+          this.getNewsStories();
+            
     }
 
 

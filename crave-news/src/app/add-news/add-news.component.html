@@ -56,11 +56,11 @@
   </div>
 </div> 
     <br>
- <button type="submit" [disabled]="!newsForm.valid" class="btn btn-primary" md-button>Add News</button>  
+ <button type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Add News</button>  
 </form>
 
 
-<app-list-news></app-list-news>
+<app-list-news #refListNews></app-list-news>
 
 
 
