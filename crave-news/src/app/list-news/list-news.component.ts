@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {NewsItem} from './../Modals/news-item';
 import {NewsServiceService} from './../Services/news-service.service';
 import {MdSnackBar} from '@angular/material';
@@ -12,6 +12,7 @@ import {MdSnackBar} from '@angular/material';
 export class ListNewsComponent implements OnInit
 {
 
+@Output() onEditNewsItemForAddNews = new EventEmitter<number>();
 
 private newsStories:NewsItem[];
 private errorMessage:string;
@@ -54,5 +55,9 @@ private newsItemDeletedMessage:string;
             
     }
 
+    onEditNewsItemForListNews(newsItemId: number)
+    {
+        this.onEditNewsItemForAddNews.emit(newsItemId);
 
+    }
 }

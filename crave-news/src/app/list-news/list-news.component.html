@@ -16,6 +16,6 @@
         <td><img [src]="newsStory.newsItemImageSrc"></td>
         <!--<td><button class="btn btn-danger" md-button (click)="deleteNewsStory(newsStory.newsItemId)">Delete</button></td>-->
         <td><app-delete-news [newsItemId]="newsStory.newsItemId" (onDeleted)="onDeleted($event)"></app-delete-news></td>
-        <td><button class="btn btn-success" md-button (click)="editNewsStory(newsStory.newsItemId)">Edit</button></td>
+        <td><app-edit-news [newsItemId]="newsStory.newsItemId" (onEditNewsItemForListNews)="onEditNewsItemForListNews($event)"></app-edit-news></td>
     </tr>
 </table>

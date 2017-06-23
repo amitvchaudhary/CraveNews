@@ -92,4 +92,14 @@ this.newsForm.controls['headline'].setValue("default");
         error=>this.errorMessage=<any>error);
 
     }
+
+
+    onEditNewsItemForAddNews(newsItemId:number)
+    {
+        console.log(newsItemId + " selected for edit in Add news component");
+    }
+
+
+
+
 }
