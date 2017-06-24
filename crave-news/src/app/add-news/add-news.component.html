@@ -56,7 +56,10 @@
   </div>
 </div> 
     <br>
- <button type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Add News</button>  
+ <button *ngIf="!isEditNewsItem" type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Add News</button>  
+ <button *ngIf="isEditNewsItem" type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Update News</button>  
+ <button *ngIf="isEditNewsItem" type="reset"  class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Cancel Update</button>  
+  
 </form>
 
 

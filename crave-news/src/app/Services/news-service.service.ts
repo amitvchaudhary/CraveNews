@@ -11,12 +11,39 @@ export class NewsServiceService
 {
 
   constructor(private http:Http) { }
+
+
 getNewsItems(): Observable<NewsItem[]>
 {
- // return this.http.get("TECHCRUNCH_MAIN").toPromise().then(response=>response.json().data as NewsItem).catch("");
-return this.http.get("http://localhost:54099/news/TIMESOFINDIA_MAIN").map((response:Response)=><NewsItem[]>response.json()).catch((error:any)=>Observable.throw(error.json().error || "Server Error"));
+      return this.http.get("http://localhost:54099/news/TIMESOFINDIA_MAIN")
+      .map((response:Response)=>
+      {
+        <NewsItem[]>response.json()
+      })
+      .catch((error:any)=>
+      Observable.throw(error.json().error || "Server Error"));
 
+}
+
+
+  getNewsItemById(newsItemId: number): Observable<NewsItem>
+  {
+    return this.http.get("http://localhost:54099/news/getNewsItemById/" + newsItemId).
+    map((response:Response)=>
+    {
+      return <NewsItem>response.json();
+  
+    }).catch((error:Response | any) =>
+    {
+      console.log(error.message || error)
+      return Observable.throw(error.message || error);
+    })
   }
+
+
+
+
+
  deleteNewsItem(newsItemId: number):Observable<string>
  {
   return this.http.delete("http://localhost:54099/news/deleteNewsItem/"+newsItemId)
@@ -59,7 +86,7 @@ private customNewsItemsError (error:Response | any)
 }
 
 
-  addNewsItems(newsItem: NewsItem): Observable<NewsItem>
+  addNewsItem(newsItem: NewsItem): Observable<NewsItem>
   {
     let headers=new Headers({'Content-Type':'application/json'});
     let options=new RequestOptions({headers:headers});

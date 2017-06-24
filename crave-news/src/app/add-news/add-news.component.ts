@@ -1,9 +1,10 @@
 import {Component,OnInit, ViewChild} from '@angular/core';
 import {NewsItem} from './../Modals/news-item';
 import {NewsServiceService} from './../Services/news-service.service';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormControl,FormBuilder, Validators} from '@angular/forms';
 import {MdSnackBar} from '@angular/material';
 import {ListNewsComponent} from './../list-news/list-news.component';
+import {DaoNewsItem} from './../DAO/daoNewsItem';
 
 
 @Component({
@@ -24,15 +25,37 @@ isEditNewsItem:boolean;
 newsForm:FormGroup;
 newsFormValues:any;
 
+
+
 //@ViewChild(ListNewsComponent) private listNewsComponent: ListNewsComponent;
 
 
 onSubmit(newsFormValues:any)
 {
     console.log("submit called");
-    console.log(newsFormValues);
+    
     this.newsFormValues=newsFormValues;
-    this.addNewsStory();
+    
+            this.newsItem = new NewsItem();
+            this.newsItem.newsItemId=this.newsFormValues.id;
+            this.newsItem.newsItemHeadline=this.newsFormValues.headline;
+            this.newsItem.newsItemDescription=this.newsFormValues.description;
+            this.newsItem.newsItemImageSrc=this.newsFormValues.imageSrc;
+            this.newsItem.newsItemLink=this.newsFormValues.newsLink;
+            this.newsItem.newsItemPubDate=new Date().toString();
+            this.newsItem.newsItemSource=this.newsFormValues.selectedNewsSource;
+            this.newsItem.newsItemTechNonTech=this.newsFormValues.techNonTech;
+       
+    if (this.isEditNewsItem==false)
+    {
+        this.addNewsStory(this.newsItem);
+    }
+    else
+    {
+        this.editNewsStory(this.newsItem);
+        
+    }
+
 }
 
 
@@ -43,7 +66,7 @@ onSubmit(newsFormValues:any)
     ngOnInit():void{
 
         
-    this.isEditNewsItem=false;
+        this.isEditNewsItem=false;
         this.newsForm=this.formBuilder.group(
             {
                 headline:[null,[Validators.required, Validators.maxLength(50)]],
@@ -51,12 +74,14 @@ onSubmit(newsFormValues:any)
                 imageSrc:[],
                 newsLink:[],
                 selectedNewsSource:[],
-                techNonTech:[]
+                techNonTech:[],
+                id:[]
+                
             }
         );
 
 
-this.newsForm.controls['headline'].setValue("default");
+//this.newsForm.controls['headline'].setValue("default");
       
         this.newsSources=["Tech Crunch","Times of India","News 18"];
 
@@ -65,24 +90,26 @@ this.newsForm.controls['headline'].setValue("default");
 
 
 
+    private editNewsStory(newsItem:NewsItem)
+    {
+        console.log("edited news item");
+        
+        console.log(newsItem.newsItemId);
 
-    private addNewsStory()
+    }
+
+
+
+
+
+    private addNewsStory(newsItem:NewsItem)
     {
     
-       
-            this.newsItem = new NewsItem();
-            this.newsItem.newsItemHeadline=this.newsFormValues.headline;
-            this.newsItem.newsItemDescription=this.newsFormValues.description;
-            this.newsItem.newsItemImageSrc=this.newsFormValues.imageSrc;
-            this.newsItem.newsItemLink=this.newsFormValues.newsLink;
-            this.newsItem.newsItemPubDate=new Date().toString();
-            this.newsItem.newsItemSource=this.newsFormValues.selectedNewsSource;
-            this.newsItem.newsItemTechNonTech=this.newsFormValues.techNonTech;
         
- console.log(this.newsItem);
+        console.log(newsItem);
 
 
-        this.newsServiceService.addNewsItems(this.newsItem).subscribe(
+        this.newsServiceService.addNewsItem(newsItem).subscribe(
         newsItem=>
         {
            // this.getNewsStories();
@@ -94,12 +121,50 @@ this.newsForm.controls['headline'].setValue("default");
     }
 
 
+
+
+
+
+
     onEditNewsItemForAddNews(newsItemId:number)
     {
         console.log(newsItemId + " selected for edit in Add news component");
+        this.newsServiceService.getNewsItemById(newsItemId)
+        .subscribe
+        (
+            newsItem => 
+            {
+                this.newsItem=newsItem;
+
+                if (this.newsItem != undefined || this.newsItem !=null)
+                {
+
+                    console.log("inside edittt");
+                    this.isEditNewsItem=true;
+                    (<FormGroup>this.newsForm).setValue(this.convertToDaoNewsItem(newsItem),{onlySelf:true});
+            
+                }
+
+                
+            }, 
+            error => this.errorMessage=<any>error
+        )   
     }
 
 
+    convertToDaoNewsItem(newsItem:NewsItem): DaoNewsItem
+    {
+        let daoNewsItem = new DaoNewsItem();
+        daoNewsItem.id=newsItem.newsItemId;
+        daoNewsItem.headline=newsItem.newsItemHeadline;
+        daoNewsItem.description=newsItem.newsItemDescription;
+        daoNewsItem.imageSrc=newsItem.newsItemImageSrc;
+        daoNewsItem.newsLink=newsItem.newsItemLink;
+        daoNewsItem.selectedNewsSource=newsItem.newsItemSource;
+        daoNewsItem.techNonTech=newsItem.newsItemTechNonTech;
+                    
+        return daoNewsItem;
+    }
 
 
 }
