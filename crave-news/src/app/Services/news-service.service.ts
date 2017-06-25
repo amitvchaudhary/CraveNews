@@ -95,6 +95,24 @@ private customNewsItemsError (error:Response | any)
 
   }
 
+  editNewsItemById(newsItem:NewsItem):Observable<string>
+  {
+
+    let headers=new Headers({'Content-Type':'application/json'});
+    let options = new RequestOptions({headers:headers});
+
+    return this.http.put('http://localhost:54099/news/editNewsItemById',newsItem,options)
+    .map((response:Response)=>
+    {
+      return response.json();
+    }).catch((error:Response | any)=>
+    {
+      console.log(error.message || error);
+      return Observable.throw(error.message || error);
+    });
+
+  }
+
 
   private extractData(response: Response)
   {

@@ -56,14 +56,14 @@
   </div>
 </div> 
     <br>
- <button *ngIf="!isEditNewsItem" type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Add News</button>  
- <button *ngIf="isEditNewsItem" type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Update News</button>  
- <button *ngIf="isEditNewsItem" type="reset"  class="btn btn-primary" (click)="refListNews.getNewsStories()" md-button>Cancel Update</button>  
+ <button *ngIf="!isEditNewsItem" type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" md-button>Add News</button>  
+ <button *ngIf="isEditNewsItem" type="submit"  [disabled]="!newsForm.valid" class="btn btn-primary" md-button>Update News</button>  
+ <button *ngIf="isEditNewsItem" type="reset"  class="btn btn-primary" md-button>Cancel Update</button>  
   
 </form>
 
 
-<app-list-news #refListNews (onEditNewsItemForAddNews)="onEditNewsItemForAddNews($event)"></app-list-news>
+<app-list-news (onEditNewsItemForAddNews)="onEditNewsItemForAddNews($event)"></app-list-news>
 
 
 

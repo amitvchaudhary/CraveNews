@@ -19,7 +19,7 @@ export class AddNewsComponent implements OnInit
 newsSources=[];
 newsStories:NewsItem[];
 newsItem:NewsItem;
-newsItemDeletedMessage:string;
+newsItemMessage:string;
 errorMessage:string;
 isEditNewsItem:boolean;
 newsForm:FormGroup;
@@ -27,14 +27,14 @@ newsFormValues:any;
 
 
 
-//@ViewChild(ListNewsComponent) private listNewsComponent: ListNewsComponent;
+@ViewChild(ListNewsComponent) private listNewsComponent: ListNewsComponent;
 
 
 onSubmit(newsFormValues:any)
 {
-    console.log("submit called");
+   
     
-    this.newsFormValues=newsFormValues;
+            this.newsFormValues=newsFormValues;
     
             this.newsItem = new NewsItem();
             this.newsItem.newsItemId=this.newsFormValues.id;
@@ -92,9 +92,23 @@ onSubmit(newsFormValues:any)
 
     private editNewsStory(newsItem:NewsItem)
     {
-        console.log("edited news item");
-        
-        console.log(newsItem.newsItemId);
+    
+
+        this.newsServiceService.editNewsItemById(newsItem)
+        .subscribe(
+            message=>
+            {
+                          
+                this.listNewsComponent.ngOnInit();
+                this.snackBar.open(message,null,{duration:2000});
+
+            },
+            error=>
+            {
+                this.errorMessage=<any>error;
+            }
+
+        )
 
     }
 
@@ -103,18 +117,12 @@ onSubmit(newsFormValues:any)
 
 
     private addNewsStory(newsItem:NewsItem)
-    {
+    { 
     
-        
-        console.log(newsItem);
-
-
         this.newsServiceService.addNewsItem(newsItem).subscribe(
         newsItem=>
         {
-           // this.getNewsStories();
-            //this.newsStories.push(this.newsItem);
-            //this.listNewsComponent.ngOnInit();
+            this.listNewsComponent.ngOnInit();
         },
         error=>this.errorMessage=<any>error);
 
@@ -128,7 +136,7 @@ onSubmit(newsFormValues:any)
 
     onEditNewsItemForAddNews(newsItemId:number)
     {
-        console.log(newsItemId + " selected for edit in Add news component");
+       
         this.newsServiceService.getNewsItemById(newsItemId)
         .subscribe
         (
@@ -139,7 +147,7 @@ onSubmit(newsFormValues:any)
                 if (this.newsItem != undefined || this.newsItem !=null)
                 {
 
-                    console.log("inside edittt");
+                    
                     this.isEditNewsItem=true;
                     (<FormGroup>this.newsForm).setValue(this.convertToDaoNewsItem(newsItem),{onlySelf:true});
             
