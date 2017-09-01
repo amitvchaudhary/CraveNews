@@ -18,7 +18,7 @@ getNewsItems(): Observable<NewsItem[]>
       return this.http.get("http://localhost:54099/news/TIMESOFINDIA_MAIN")
       .map((response:Response)=>
       {
-        <NewsItem[]>response.json()
+        return <NewsItem[]>response.json()
       })
       .catch((error:any)=>
       Observable.throw(error.json().error || "Server Error"));

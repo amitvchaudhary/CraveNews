@@ -1,17 +1,30 @@
+<!--<div class="container">
+    <div class="row">
+        <div class="col-md-12" *ngFor="let newsItem of newsItems">
+              
+       <div [innerHTML]="newsItem.newsItemDescription"></div>
+ 
+        </div>
+    </div>
+</div>-->
+   
 
-   
-<md-card *ngFor="let newsItem of newsItems">
-      <md-card-header>
-        <md-card-title>{{newsItem.newsItemHeadline}}</md-card-title>
-        <md-card-subtitle> Published on: {{newsItem.newsItemPubDate}}</md-card-subtitle>
-    </md-card-header>
-    <!--<img md-card-image [src]="newsItem.newsItemImageSrc">-->
-    <md-card-content>
-  
-    <p [innerHTML]="newsItem.newsItemDescription"></p>
-    </md-card-content>
-        <md-card-footer>
-       
-    </md-card-footer>
-</md-card>
-   
+
+     
+            <md-card *ngFor="let newsItem of newsItems" class="example-card">
+            <md-card-header>
+                <md-card-title>{{newsItem.newsItemHeadline}}</md-card-title>
+                <md-card-subtitle> Published on: {{newsItem.newsItemPubDate}}</md-card-subtitle>
+            </md-card-header>
+            <!--<img md-card-image [src]="newsItem.newsItemImageSrc">-->
+            <md-card-content>
+        
+            <div [innerHTML]="newsItem.newsItemDescription"></div>
+            </md-card-content>
+                <md-card-footer>
+            
+            </md-card-footer>
+        </md-card>
+
+
+    

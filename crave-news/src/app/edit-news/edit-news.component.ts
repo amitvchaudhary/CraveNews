@@ -15,7 +15,7 @@ export class EditNewsComponent implements OnInit
 
     }
 
-    private editNewsStory():void
+    public editNewsStory():void
     {
         console.log(this.newsItemId + " editNewstory selected");
 

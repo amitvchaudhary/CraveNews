@@ -6,11 +6,11 @@
       <span class="CraveNews-Title">Crave News</span>
       <button md-button [mdMenuTriggerFor]="menu">Custom Feeds</button>
       <md-menu #menu="mdMenu">
-        <button md-menu-item>Add Custom Feeds</button>
+        <button md-menu-item (click)="goToAddCustomFeeds()">Add Custom Feeds</button>
         <button md-menu-item>View Custom Feeds</button>
       </md-menu>
 
-      <button md-button>RSS Feeds</button>
+      <button md-button (click)="goToRSSFeeds()">RSS Feeds</button>
 
 
       
@@ -34,8 +34,10 @@
     </md-list>
   </md-sidenav>
 
+
+<router-outlet></router-outlet>
   <!--<app-news-dashboard></app-news-dashboard>-->
-  <app-add-news></app-add-news>
+  <!--<app-add-news></app-add-news>-->
 
 
 </md-sidenav-container>

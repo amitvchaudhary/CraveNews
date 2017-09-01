@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav-header',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavHeaderComponent implements OnInit {
 
-  constructor() { }
+  public onClick;
+  constructor(private router:Router) { }
 
   newsSources:Object[]=[
     {
@@ -25,5 +27,18 @@ export class NavHeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  goToRSSFeeds():void
+  {
+    
+      this.router.navigate(['news-dashboard']);
+  }
+
+  goToAddCustomFeeds():void
+  {
+      this.router.navigate(['/add-news']);
+  }
+
+
 
 }

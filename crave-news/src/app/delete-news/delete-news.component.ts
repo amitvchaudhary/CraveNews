@@ -23,7 +23,7 @@ export class DeleteNewsComponent implements OnInit
 
 
 
-    private deleteNewsStory()
+    public deleteNewsStory()
     {
         console.log(this.newsItemId + "selected for deletion");
         this.newsServiceService.deleteNewsItem(this.newsItemId)

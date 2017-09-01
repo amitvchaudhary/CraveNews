@@ -1,5 +1,5 @@
 <br><br>
-<div class="panel panel-default" *ngIf="newsStories.length>0">
+<div class="panel panel-default" >
   <div class="panel-body">
       <div class="panel-heading"><h3><b>News Items </b></h3></div>
 
@@ -19,3 +19,6 @@
         <td><app-edit-news [newsItemId]="newsStory.newsItemId" (onEditNewsItemForListNews)="onEditNewsItemForListNews($event)"></app-edit-news></td>
     </tr>
 </table>
+<!--*ngIf="newsStories.length>0"-->
+  </div>
+</div>

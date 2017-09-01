@@ -14,7 +14,7 @@ export class ListNewsComponent implements OnInit
 
 @Output() onEditNewsItemForAddNews = new EventEmitter<number>();
 
-private newsStories:NewsItem[];
+public newsStories:NewsItem[];
 private errorMessage:string;
 private newsItemDeletedMessage:string;
 
