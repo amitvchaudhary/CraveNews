@@ -1,0 +1,49 @@
+.mat-toolbar.mat-primary{background:#00bcd4;color:#ffffff}
+.example-container {
+  width: 5000px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  width:3000px;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+md-sidenav{
+  width:200px;
+}
+
+sidenav-content{
+    width:5000px;
+}
+
+.fill-space {
+  // This fills the remaining space, by using flexbox.
+  // Every toolbar row uses a flexbox row layout.
+  flex: 1 1 auto;
+}
+
+
+.newsSource
+{
+font-weight: bold;
+color: #00bcd4;
+}
+
+
+button{
+  font-size: 20px;
+}
+
+.CraveNews-Title
+{
+  font-size: 30px;
+  
+}
